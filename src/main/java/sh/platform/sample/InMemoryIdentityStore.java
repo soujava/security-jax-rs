@@ -21,18 +21,11 @@ public class InMemoryIdentityStore implements IdentityStore {
         return 10;
     }
 
-
-    @Override
-    public Set<String> getCallerGroups(CredentialValidationResult validationResult) {
-        return Collections.singleton("ADMIN");
-    }
-
-
     @Override
     public CredentialValidationResult validate(Credential credential) {
 
         if (credential != null) {
-            return new CredentialValidationResult("ADMIN");
+            return new CredentialValidationResult("ADMIN", Collections.singleton("ADMIN"));
         }
         return INVALID_RESULT;
     }
